@@ -1,2 +1,2 @@
 # JavaScript-Exercises
-JavaScript assignments @ SoftUni.
+JavaScript assignments @ SoftUni
