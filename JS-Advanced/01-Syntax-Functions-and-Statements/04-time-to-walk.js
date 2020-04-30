@@ -9,12 +9,21 @@ function solve(...params) {
 
   let timeHr = Math.floor(timeInSeconds / 3600);
   let timeMin = Math.floor(timeInSeconds / 60);
-  let timeSec = Math.round(timeInSeconds - (timeMin * 60));
+  let timeSec = Math.round(timeInSeconds - timeMin * 60);
 
- console.log((timeHr < 10 ? "0" : "") + timeHr + ":" + (timeMin + restTimeInSeconds < 10 ? "0" : "") + (timeMin + restTimeInSeconds) + ":" + (timeSec < 10 ? "0" : "") + timeSec);
+  console.log(
+    (timeHr < 10 ? '0' : '') +
+      timeHr +
+      ':' +
+      (timeMin + restTimeInSeconds < 10 ? '0' : '') +
+      (timeMin + restTimeInSeconds) +
+      ':' +
+      (timeSec < 10 ? '0' : '') +
+      timeSec
+  );
 }
 
-solve(4000, 0.60, 5);
+solve(4000, 0.6, 5);
 
 // Input:
 // test0 = 4000, 0.60, 5

@@ -1,20 +1,20 @@
 function solve(num) {
-    let arrayOfNumbers = String(num).split("");
-    let isSame = true;
-    let firstElement = arrayOfNumbers[0];
+  let arrayOfNumbers = String(num).split('');
+  let isSame = true;
+  let firstElement = arrayOfNumbers[0];
 
-    arrayOfNumbers.forEach(function (element) {
-        if (element != firstElement) {
-            isSame = false;
-        }
-    });
+  arrayOfNumbers.forEach(function (element) {
+    if (element != firstElement) {
+      isSame = false;
+    }
+  });
 
-    let sum = arrayOfNumbers
-        .map(Number)
-        .reduce((accumulator, currentValue) => accumulator + currentValue);
+  let sum = arrayOfNumbers
+    .map(Number)
+    .reduce((accumulator, currentValue) => accumulator + currentValue);
 
-    console.log(isSame);
-    console.log(sum);
+  console.log(isSame);
+  console.log(sum);
 }
 
 solve(2222222);

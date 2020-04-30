@@ -1,5 +1,4 @@
 function solve(array) {
-
   let obj = {};
 
   for (let index = 0; index < array.length; index += 2) {
@@ -13,11 +12,11 @@ function solve(array) {
 }
 
 let test0 = ['Yoghurt', 48, 'Rise', 138, 'Apple', 52];
-// Expected output : 
+// Expected output :
 // test0 = { Yoghurt: 48, Rise: 138, Apple: 52 }
 
 let test1 = ['Potato', 93, 'Skyr', 63, 'Cucumber', 18, 'Milk', 42];
-// Expected output : 
+// Expected output :
 // test1 = { Potato: 93, Skyr: 63, Cucumber: 18, Milk: 42 }
 
 solve(test0);

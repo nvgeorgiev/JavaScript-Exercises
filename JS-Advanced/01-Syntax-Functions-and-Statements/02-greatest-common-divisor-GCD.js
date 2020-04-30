@@ -10,7 +10,6 @@ function solve(x, y) {
 
 console.log(solve(8, 4));
 
-
 // Version 2
 
 function solve2(...params) {
