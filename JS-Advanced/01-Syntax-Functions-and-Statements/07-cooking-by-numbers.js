@@ -25,7 +25,7 @@ function solve(array) {
   }
 }
 
-let test0 = ['32', 'chop', 'chop', 'chop', 'chop', 'chop'];
+const test0 = ['32', 'chop', 'chop', 'chop', 'chop', 'chop'];
 // Expected output:
 // test0 = 16
 //         8
@@ -33,7 +33,7 @@ let test0 = ['32', 'chop', 'chop', 'chop', 'chop', 'chop'];
 //         2
 //         1
 
-let test1 = ['9', 'dice', 'spice', 'chop', 'bake', 'fillet'];
+const test1 = ['9', 'dice', 'spice', 'chop', 'bake', 'fillet'];
 // Expected output:
 // test1 = 3
 //         4

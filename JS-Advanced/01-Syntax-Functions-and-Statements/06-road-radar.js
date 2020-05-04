@@ -20,16 +20,16 @@ function solve(array) {
   }
 }
 
-let test0 = [40, 'city'];
+const test0 = [40, 'city'];
 // Expected output: empty
 
-let test1 = [21, 'residential'];
+const test1 = [21, 'residential'];
 // Expected output: speeding
 
-let test2 = [120, 'interstate'];
+const test2 = [120, 'interstate'];
 // Expected output: excessive speeding
 
-let test3 = [200, 'motorway'];
+const test3 = [200, 'motorway'];
 // Expected output: reckless driving
 
 solve(test3);

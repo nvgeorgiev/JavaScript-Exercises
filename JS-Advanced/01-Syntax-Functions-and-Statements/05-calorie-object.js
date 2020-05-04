@@ -11,12 +11,12 @@ function solve(array) {
   console.log(obj);
 }
 
-let test0 = ['Yoghurt', 48, 'Rise', 138, 'Apple', 52];
+const test0 = ['Yoghurt', 48, 'Rise', 138, 'Apple', 52];
 // Expected output :
 // test0 = { Yoghurt: 48, Rise: 138, Apple: 52 }
 
-let test1 = ['Potato', 93, 'Skyr', 63, 'Cucumber', 18, 'Milk', 42];
+const test1 = ['Potato', 93, 'Skyr', 63, 'Cucumber', 18, 'Milk', 42];
 // Expected output :
 // test1 = { Potato: 93, Skyr: 63, Cucumber: 18, Milk: 42 }
 
-solve(test0);
+solve(test1);

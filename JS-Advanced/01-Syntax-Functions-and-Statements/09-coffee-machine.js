@@ -51,7 +51,7 @@ function solve(array) {
   console.log(`Income Report: $${totalIncome.toFixed(2)}`);
 }
 
-let test0 = [
+const test0 = [
   '1.00, coffee, caffeine, milk, 4',
   '0.40, tea, milk, 2',
   '1.00, coffee, decaf, 0',
@@ -62,7 +62,7 @@ let test0 = [
 // You ordered coffee. Price: $0.90 Change: $0.10
 // Income Report: $1.90
 
-let test1 = ['8.00, coffee, decaf, 4', '1.00, tea, 2'];
+const test1 = ['8.00, coffee, decaf, 4', '1.00, tea, 2'];
 //Expected output:
 // You ordered coffee. Price: $1.00 Change: $7.00
 // You ordered tea. Price: $0.90 Change: $0.10

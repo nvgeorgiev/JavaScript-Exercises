@@ -29,10 +29,10 @@ function solve(array) {
   }
 }
 
-let test0 = [3, 0, 0, 4];
+const test0 = [3, 0, 0, 4];
 // Expected output:
 
-let test1 = [2, 1, 1, 1];
+const test1 = [2, 1, 1, 1];
 // Expected output:
 
 solve(test1);
