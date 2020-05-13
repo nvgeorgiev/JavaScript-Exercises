@@ -8,11 +8,7 @@ function addRemoveElements(arr) {
     }
   }
 
-  if (resultArr.length === 0) {
-    return 'Empty';
-  } else {
-    return resultArr.join('\n');
-  }
+  return resultArr.length > 0 ? resultArr.join('\n') : 'Empty';
 }
 
 console.log(addRemoveElements(['add', 'add', 'remove', 'add', 'add']));
