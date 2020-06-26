@@ -26,7 +26,7 @@ function solve() {
     toString() {
       const result = [
         super.toString(),
-        `Rating: ${this.likes} - ${this.dislikes}`,
+        `Rating: ${this.likes - this.dislikes}`,
       ];
 
       if (this.comments.length > 0) {
