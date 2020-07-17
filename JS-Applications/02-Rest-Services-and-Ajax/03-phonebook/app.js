@@ -1,50 +1,106 @@
-function attachEvents() {
-  const elements = {
-    person() {
-      return document.querySelector('input#person');
-    },
-    phone() {
-      return document.querySelector('input#phone');
-    },
-    createContact() {
-      return document.querySelector('button#btnCreate');
-    },
-    loadContacts() {
-      return document.querySelector('button#btnLoad');
-    },
-    phonebook() {
-      return document.querySelector('ul#phonebook');
-    },
-  };
+// dom file function
+function el(type, content, attributes) {
+  const result = document.createElement(type);
 
-  const contacts = [];
+  if (attributes !== undefined) {
+    Object.assign(result, attributes);
+  }
 
-  const baseURL = 'http://localhost:8000/';
+  if (Array.isArray(content)) {
+    content.forEach(append);
+  } else {
+    append(content);
+  }
 
-  elements.createContact().addEventListener('click', () => {
-    const { value: person } = elements.person();
-    const { value: phone } = elements.phone();
+  function append(node) {
+    if (typeof node === 'string' || typeof node === 'number') {
+      node = document.createTextNode(node);
+    }
+    result.appendChild(node);
+  }
 
-    fetch(baseURL, {
-      method: 'POST',
-      body: JSON.stringify({ person, phone }),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        contacts.push(response);
-        elements.person().value = '';
-        elements.phone().value = '';
-      });
-  });
+  return result;
+}
 
-  elements.loadContacts().addEventListener('click', () => {
-    contacts.forEach((contact) => {
-      let listItem = document.createElement('li');
-      const key = Object.keys(contact)[0];
-      listItem.textContent = `${contact[key].person} - ${contact[key].phone}`;
-      elements.phonebook().appendChild(listItem);
-    });
+// data file functions
+function host(endpoint) {
+  if (endpoint === undefined) {
+    return 'http://localhost:8000/phonebook';
+  }
+  return `http://localhost:8000/phonebook/${endpoint}`;
+}
+
+async function getData() {
+  const data = await (await fetch(host())).json();
+
+  return data;
+}
+
+function deleteEntry(id) {
+  return fetch(host(id), {
+    method: 'DELETE',
   });
 }
 
-attachEvents();
+async function createEntry(entry) {
+  return (
+    await fetch(host(), {
+      method: 'POST',
+      body: JSON.stringify(entry),
+    })
+  ).json();
+}
+
+// app logic
+window.addEventListener('load', () => {
+  const list = document.querySelector('#phonebook');
+  const inputPerson = document.querySelector('#person');
+  const inputPhone = document.querySelector('#phone');
+
+  document.querySelector('#btnLoad').addEventListener('click', renderPhonebook);
+  document.querySelector('#btnCreate').addEventListener('click', createContact);
+
+  async function renderPhonebook() {
+    const data = await getData();
+
+    list.innerHTML = '';
+
+    Object.entries(data).forEach(([id, entry]) => createElement(id, entry));
+  }
+
+  function createElement(id, entry) {
+    const button = el('button', 'Delete');
+
+    const element = el('li', [
+      el('span', `${entry.person}: ${entry.phone}`),
+      button,
+    ]);
+
+    button.addEventListener('click', async () => {
+      try {
+        await deleteEntry(id);
+        element.remove();
+      } catch (error) {
+        alert(error.message);
+        console.error(error);
+      }
+    });
+
+    list.appendChild(element);
+  }
+
+  async function createContact() {
+    const person = inputPerson.value;
+    const phone = inputPhone.value;
+
+    const entry = {
+      person,
+      phone,
+    };
+
+    const result = await createEntry(entry);
+    const id = Object.keys(result)[0];
+
+    createElement(id, result[id]);
+  }
+});
