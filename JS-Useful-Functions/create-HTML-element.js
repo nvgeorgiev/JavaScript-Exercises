@@ -8,7 +8,7 @@ function createHTMLelement(type, content, attributes) {
 
   if (Array.isArray(content)) {
     content.forEach(append);
-  } else {
+  } else if (content !== null && content !== undefined) {
     append(content);
   }
 
