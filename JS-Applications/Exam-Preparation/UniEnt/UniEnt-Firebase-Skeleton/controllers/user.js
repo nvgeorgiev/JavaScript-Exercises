@@ -3,18 +3,6 @@ import { registerUser, login, logout } from '../models/user.js';
 import { saveUserInfo, setHeader } from './auth.js';
 import { getAll } from '../models/events.js';
 
-export function getLogin(ctx) {
-  ctx.loadPartials(commonPartial).partial('./views/user/login.hbs');
-}
-
-export function getProfile(ctx) {
-  setHeader(ctx);
-  getAll(ctx).then((res) => {
-    console.log(res);
-    ctx.loadPartials(commonPartial).partial('./views/user/profile.hbs');
-  });
-}
-
 export function getRegister(ctx) {
   ctx.loadPartials(commonPartial).partial('./views/user/register.hbs');
 }
@@ -35,6 +23,10 @@ export function postRegister(ctx) {
     .catch((e) => console.log(e));
 }
 
+export function getLogin(ctx) {
+  ctx.loadPartials(commonPartial).partial('./views/user/login.hbs');
+}
+
 export function postLogin(ctx) {
   const { username, password } = ctx.params;
 
@@ -49,6 +41,14 @@ export function postLogin(ctx) {
     .catch((e) => {
       notification(`${e.message}`, '#errorBox');
     });
+}
+
+export function getProfile(ctx) {
+  setHeader(ctx);
+  getAll(ctx).then((res) => {
+    console.log(res);
+    ctx.loadPartials(commonPartial).partial('./views/user/profile.hbs');
+  });
 }
 
 export function getLogout(ctx) {
